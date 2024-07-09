@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %} 
+
+{% block title%} User Form {% endblock %}
+
+{% block content %}
+
+<section class="section justify-content-center align-items-center">
+    <div class="container">
+        <h1>Enter details</h1>
+        <div class="row">
+            <div class="col-lg-8  mb-5 mb-lg-0">
+                <form class="form" action="{% url 'webapp:feedback' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}   <!--uses bootstrap styling into form fields -->
+                 <button type="submit" class="btn btn-default">Submit</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

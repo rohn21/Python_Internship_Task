@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import random
 from datetime import datetime
+from webapp.forms import CollectData
+from webapp.models import UserData
 
 quotes = [
     {"text": "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.", "author": "Helen keller"},
@@ -15,6 +17,24 @@ quotes = [
 def index(request):
     generate_quotes = random.choice(quotes)
     dt_time = datetime.now()
-    context = {'quote_text': generate_quotes['text'], 'quote_author': generate_quotes.get('author', ''), 'current_date': dt_time.strftime('%Y-%m-%d'), 'current_time': dt_time.strftime('%H-%M-%S'),}    # will retrieve author related to that quote using get() and the empty string for default value of that key
+    context = {'quote_text': generate_quotes['text'], 
+               'quote_author': generate_quotes.get('author', ''),
+                'current_date': dt_time.strftime('%Y-%m-%d'), 
+                'current_time': dt_time.strftime('%H-%M-%S'),
+            }    # will retrieve author related to that quote using get() and the empty string for default value of that key
     return render(request, 'webapp/index.html', context)
 
+def user_data(request):
+    if request.method == 'POST':
+        form = CollectData(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('webapp:success')
+    else:
+        form = CollectData()
+    return render(request, 'webapp/feedback.html', {'form': form})
+
+def display_data(request):
+    usr_data = UserData.objects.order_by('-id').first() # display lastly submitted data
+    data = {'usr_data': usr_data}
+    return render(request, 'webapp/user_details.html', data)

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="section">
+    <div class="container d-flex justify-content-center align-items-center">
+            <div class="col-lg-8  mb-5 mb-lg-0">
+                <h1 class="text-center">User's Collected Data</h1>
+                <hr>
+                {% if usr_data %}
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Name</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                             {{ usr_data.name }}
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            {{ usr_data.email }}
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Phone</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            {{ usr_data.Phone_number }}
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Gender</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            {{ usr_data.Gender }}
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            <h6 class="mb-0">Address</h6>
+                          </div>
+                          <div class="col-sm-9 text-secondary">
+                            {{ usr_data.address }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="container">
+                        <p>No data Available</p>
+                    </div>
+                    {% endif %}
+            </div>
+    </div>
+</section>
+
+{% endblock %}

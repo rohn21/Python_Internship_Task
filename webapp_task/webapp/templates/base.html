@@ -1,18 +1,11 @@
 {% load static %}
 <!DOCTYPE html>
 
-<!--
- // WEBSITE: https://themefisher.com
- // TWITTER: https://twitter.com/themefisher
- // FACEBOOK: https://www.facebook.com/themefisher
- // GITHUB: https://github.com/themefisher/
--->
-
 <html lang="en-us">
 
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}GleamQuest - Homepage{% endblock %}</title>
+    <title>{% block title %}GleamQuest - Homepage{% endblock %}</title>    <!-- use this block to change title of specific page -->
 
     <!-- mobile responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -23,11 +16,9 @@
     <meta name="theme-name" content="gleamquest" />
 
     <!-- plugins -->
-    <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWJ0bbck.woff2"
-        style="font-display: optional;">
+    <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFWJ0bbck.woff2" style="font-display: optional;">
     <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Montserrat:600%7cOpen&#43;Sans&amp;display=swap" media="screen">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:600%7cOpen&#43;Sans&amp;display=swap" media="screen">
 
     <link rel="stylesheet" href="{% static 'themify-icons/themify-icons.css' %}">
     <link rel="stylesheet" href="{% static 'slick/slick.css' %}">
@@ -46,7 +37,7 @@
         <div class="container">
             {% block navbar %}
             <nav class="navbar navbar-expand-lg navbar-white">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{% url 'webapp:index' %}">
                     <img class="img-fluid" width="150px" src="{% static 'images/logo.png' %}" alt="LogBook">
                 </a>
                 <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
@@ -55,37 +46,25 @@
 
                 <div class="collapse navbar-collapse text-center" id="navigation">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                homepage <i class="ti-angle-down ml-1"></i>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="index-full.html">Homepage Full Width</a>
-                                <a class="dropdown-item" href="index-full-left.html">Homepage Full With Left Sidebar</a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'webapp:index' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="#">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="#">Contact</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">Pages <i class="ti-angle-down ml-1"></i>
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="author.html">Author</a>
-                                <a class="dropdown-item" href="post-details-1.html">Post Details 1</a>
+                                <a class="dropdown-item" href="{% url 'webapp:feedback' %}">User Details</a>
+                                <a class="dropdown-item" href="#">Author</a>
                             </div>
                         </li>
                     </ul>
-
-                    <select class="m-2 border-0" id="select-language">
-                        <option id="en" value="about/" selected>En</option>
-                        <option id="fr" value="fr/about/">Fr</option>
-                    </select>
 
                     <!-- search -->
                     <div class="search px-4">
@@ -108,11 +87,12 @@
     {% block content %}
     
     {% endblock %}
+
     <footer class="section-sm pb-0 border-top border-default">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-md-3 mb-4">
-                    <a class="mb-4 d-block" href="index.html">
+                    <a class="mb-4 d-block" href="{% url 'webapp:index' %}">
                         <img class="img-fluid" width="150px" src="{% static 'images/logo.png' %}" alt="LogBook">
                     </a>
                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</p>
@@ -123,10 +103,10 @@
                 <div class="col-lg-2 col-md-3 col-6 mb-4">
                     <h6 class="mb-4">Quick Links</h6>
                     <ul class="list-unstyled footer-list">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-conditions.html">Terms Conditions</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms Conditions</a></li>
                     </ul>
                 </div>
 
